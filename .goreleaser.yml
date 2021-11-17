@@ -1,0 +1,22 @@
+project_name: systemd-alerter
+builds:
+  - main: .
+    binary: systemd-alerter
+    env:
+      - CGO_ENABLED=0
+    goarch:
+      - amd64
+    goos:
+      - linux
+    ldflags:
+      - -s -w -X "main.smtpUser={{.Env.SMTP_USERNAME}}" -X "main.smtpPassword={{.Env.SMTP_PASSWORD}}"
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - '^docs:'
+      - '^test:'
+archives:
+  - format: binary
+checksum:
+  disable: true

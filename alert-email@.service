@@ -1,0 +1,6 @@
+[Unit]
+Description=Alert when any registered (OnFailure unit) service is down
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/systemd-alerter -service "%i"
